@@ -1,24 +1,10 @@
    <header class="li-header-1">
                 <!-- Begin Header Top Area -->
-                <style type="text/css">
-                    ht-setting-trigger, .ht-currency-trigger, .ht-language-trigger {
-    color: #000;
-}
+<style type="text/css">
 
-.header-bottom {
-    background: #03b1f7;
-    color:#fff;
-}
+ht-setting-trigger, .ht-currency-trigger, .ht-language-trigger { color: #000; } button.li-btn { background: #03b1f7;   color:#fff; } .header-sticky.sticky { background: rgba(254,215,0,.8); } a, button, input {  outline: medium none;   color: #000; } .header-bottom {   background: #03b1f7;   color:#000; } .hb-menu nav > ul > li > a {   position: relativ;   color: #fff; }
 
-button.li-btn {
-    background: #03b1f7;   color:#fff;}
-    .header-sticky.sticky {
-    background: rgba(254,215,0,.8);}
 
-    a, button, input {
-    outline: medium none;
-    color: #000;
-}
                 </style>
                 <div class="header-top">
                     <div class="container">
@@ -27,7 +13,7 @@ button.li-btn {
                             <div class="col-lg-3 col-md-4">
                                 <div class="header-top-left">
                                     <ul class="phone-wrap">
-                                        <li><span>Telephone :</span><a href="#">(+226) 76242278</a></li>
+                                        <li><span>Téléphone :</span><a href="#">(+226) 76242278</a></li>
                                     </ul>
                                 </div>
                             </div>
@@ -41,7 +27,7 @@ button.li-btn {
                                         <!-- Setting Area End Here -->
                                         <!-- Begin Currency Area -->
                                         <li>
-                                            <span class="currency-selector-wrapper">Devise :</span>
+                                            <span class="currency-selector-wrapper">Dévise :</span>
                                             <div class="ht-currency-trigger"><span>FCFA </span></div>
                                            
                                         </li>
@@ -80,7 +66,7 @@ button.li-btn {
                                 <!-- Begin Header Middle Searchbox Area -->
                                 <form action="#" class="hm-searchbox">
                               
-                                    <input type="search" id="acceuil_search" placeholder="Enter your search key ..."/>
+                                    <input type="search" id="acceuil_search" placeholder="Entrez votre clé de recherche ..."/>
                                     <button class="li-btn" type="submit"><i class="fa fa-search"></i></button>
                                 </form>
                                 <!-- Header Middle Searchbox Area End Here -->
@@ -99,7 +85,7 @@ button.li-btn {
                                                 <ul class="ht-setting-list">
                                                     <li><a href="{{ route('login') }}">Se connectez</a></li>
                                                    
-                                                    <li><a href="{{ route('register') }}">S'inscrire</a></li>
+                                                   
                                                 </ul>
                                             </div>
                                     </li>
@@ -126,7 +112,8 @@ button.li-btn {
                                     <nav>
                                         <ul>
                                       
-                                        <li><a href="{{ route('boutiques','orderBy=orderByDesc')}}">Nos Produits</a></li>
+                                        <li><a href="{{ route('acceuil')}}">Accueil</a></li>
+
                                         </ul>
                                     </nav>
                                 </div>

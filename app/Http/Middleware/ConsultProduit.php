@@ -21,6 +21,6 @@ class ConsultProduit
         {
          return $next($request);   
         } 
-        return redirect('user')->withStatu("Statut : vous n'avez pas les droits nécésaires pour acceder a cette resource! Veuiller contacter votre administrateur! ");
+        return redirect('user')->withStatu("Statut : vous n'avez pas les droits nécésaires pour acceder à cette resource! Veuiller contacter votre administrateur! ");
     }
 }

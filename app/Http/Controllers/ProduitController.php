@@ -12,7 +12,7 @@ use App\Http\Requests\SearchpRequest;
 use Image;
 
 class ProduitController extends Controller
-{
+{ /*comment*/
 
 	public function index()
 	{ 
@@ -34,7 +34,7 @@ class ProduitController extends Controller
         $image='1';
         $image += Produit::orderByDesc('id')->first()->id;
     
-	    $idau=Auth::user()->id;
+	   // $idau=Auth::user()->id;
         $imageName=null;
         if ($request->file('image'))
         {
@@ -54,7 +54,7 @@ class ProduitController extends Controller
             'quantite' => $request->quantite,
             'description' => $request->description,
             'image' => $imageName,
-            'user_id' => $idau,
+            'user_id' => Auth::user()->id,
         ]);
 
         return redirect()->route('produits.index', $produit)->withOk(" "  .$produit->designation. " a été bien ajouté à la liste de vos produits!");
@@ -71,16 +71,17 @@ class ProduitController extends Controller
 
           public function favories(Request $request)
         {
-            $request->id_favorie;
-            $request->fin_favorie;
-            Produit::where('id', $request->id_favorie)->update([
+            $request->prdidh;
+             $request->debut_favorie;
+              $request->fin_favorie;
+            Produit::where('id', $request->prdidh)->update([
 
                 'dt_debut_favorie' => $request->debut_favorie,
                 'dt_fin_favorie' => $request->fin_favorie,
     
             ]);
 
-            return redirect()->route('produits.show', $request->prdidh)->withFav("statut "  .$request->prdnameh. " a été bien ajouté aux favories !");
+           return redirect()->route('produits.show', $request->prdidh)->withFav("statut "  .$request->prdnameh. " a été bien ajouté aux favories !");
         }
 
     	public function edit(Produit $produit)
@@ -90,11 +91,8 @@ class ProduitController extends Controller
     	}
 
         //ProduitUpdate
-    	public function update(Request $request, $id)
+    	public function update(ProduitUpdateRequest $request, $id)
     	{
-    	   $request->validate([
-                    'image' => 'nullable|mimes:png,jpg,jpeg,gif,bmp,svg',
-                ]);
 
 
            if ($request->file('image'))
@@ -116,42 +114,18 @@ class ProduitController extends Controller
             }
 
 
-                $request->validate([
-                    //'designation' => 'required|min:3|max:50|unique:produits,designation',
-                    'prix' => 'required|numeric|between:1000,1000000',
-                    'quantite' => 'required|numeric|between:5,500',
-                    'description' => 'required|min:10|max:255',
-                    'category_id' => 'required|numeric',
-                    'image' => 'nullable|mimes:png,jpg,jpeg,gif,bmp,svg',
-                ]);
-
-            //$imageName =$id;
-            
-
-                $produit = $request->designation;
-                Produit::where('id', $id)->update([
-                //'designation' => $request->designation,
-                'prix' => $request->prix,
-                'category_id' => $request->category_id,
-                'quantite' => $request->quantite,
-                'description' => $request->description,
-                //'image' => $imageName,
-                //'user_id' => '6', 
-                  ]);
-                //udate the name of product
-                $request->validate([
-                    'designation' => 'required|min:3|max:50|unique:produits,designation',
-             
-                ]);
-
                 $produit = $request->designation;
                 Produit::where('id', $id)->update([
                 'designation' => $request->designation,
-           
-                  ]);
+                'prix' => $request->prix,
+                'category_id' => $request->category_id,
+                'quantite' => $request->quantite,
+                'description' => $request->description, 
+            ]);
+               
             
 
-        return redirect()->route('produits.index', $produit)->withMo("statut "  .$produit. " a été bien modifié !");
+        return redirect()->route('produits.edit', $id)->withMo("statut "  .$produit. " a été bien modifié !");
        
       }
 
@@ -175,7 +149,7 @@ class ProduitController extends Controller
            
             if ($request->file('image2')) 
             {
-                echo $produit=$request->designation;
+                 $produit=$request->designation;
                 $imagena=$request->file('image2')->getClientOriginalName();
                    
                 $extension =  $request->file('image2')->getClientOriginalExtension();
@@ -211,7 +185,7 @@ class ProduitController extends Controller
                    
                 $extension =  $request->file('image3')->getClientOriginalExtension();
                 $imageName =  $request->ajoutprodimg3.'3'. '.' . $extension;
-                
+
                 $request->file('image3')->move('img', $imageName);
 
                 $imagePath = public_path() . '/img/' . $imageName;

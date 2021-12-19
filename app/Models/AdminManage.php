@@ -9,7 +9,7 @@ class AdminManage extends Model
 {
     use HasFactory;
      public $timestamps = false;
-    public $fillable = ['id','name', 'email'];
+    public $fillable = ['id','name','email','image'];
 
      public function AdminManage()
     {

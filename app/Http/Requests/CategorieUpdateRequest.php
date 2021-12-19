@@ -24,9 +24,9 @@ class CategorieUpdateRequest extends FormRequest
     public function rules()
     {
         return [
-            'libele' => 'required|min:3|max:50|unique:categories,libele',
+            'libele' => 'required|min:3|max:50|unique:categories,libele,'.$this->categorie,
             'description' => 'required|min:3|max:255',
-            'imagecat' => 'required|mimes:png,jpg,jpeg,gif,bmp,svg',
+            'imagecat' => 'nullable|mimes:png,jpg,jpeg,gif,bmp,svg',
         ];
     }
 }

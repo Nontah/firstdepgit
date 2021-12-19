@@ -1,7 +1,6 @@
 <x-app-layout>
 <br><br>
 
-
 <div class="bg-gray-800 pt-3">
     <div class="rounded-tl-3xl bg-gradient-to-r from-blue-900 to-gray-800 p-4 shadow text-2xl text-white">
         <h3 class="font-bold pl-2"> Mise à jour d'un catégorie de produit  
@@ -13,10 +12,13 @@
         </h3>
     </div>
 </div>
-
-
-
- <form method="post" action="{{ route('categorie.update', $categorie) }}" enctype="multipart/form-data">   
+  @if(session()->has('mo'))
+            <div class="bg-blue-100 border-t border-b border-blue-500 text-blue-700 px-4 py-3" role="alert">
+              <p class="font-bold">Information </p>
+              <p class="text-sm">{!! session('mo') !!}.</p>
+            </div>
+          @endif
+<form method="post" action="{{ route('categorie.update', $categorie) }}" enctype="multipart/form-data">   
          @method("PUT")    
             @csrf
               <div class="p-10 rounded-md shadow-md bg-white">

@@ -7,7 +7,6 @@ use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rules;
-//use App\Models\AdminManage;
 
 
 class AdminManageController extends Controller
@@ -29,8 +28,6 @@ class AdminManageController extends Controller
 
 	    public function store(Request $request)
         {    
-
-            
             $request->validate([
                 'name' => 'required|string|max:255',
                 'email' => 'required|string|email|max:255|unique:users',
@@ -40,6 +37,7 @@ class AdminManageController extends Controller
             $user = User::create([
                 'name' => $request->name,
                 'email' => $request->email,
+                'image' => '1',
                 'password' => Hash::make($request->password),
             ]);
 
@@ -53,9 +51,9 @@ class AdminManageController extends Controller
     	}
 
       public function update(Request $request, $id)
-  {    
+    {    
 
-    /*********droit catégorie*******/
+     /*********droit catégorie*******/
       if($request->consulte == 'on') {
             user::where('id',''.$id.'')->update([
 
@@ -65,23 +63,7 @@ class AdminManageController extends Controller
       } else { user::where('id',''.$id.'')->update([ 'consultCat' => null, ]); }
 
 
-      if($request->edite == 'on') {
-            user::where('id',''.$id.'')->update([
-
-              'editeCat' => 1,
-           
-            ]);
-        }  else { user::where('id',''.$id.'')->update([ 'editeCat' => null, ]); }
-
-
-        if($request->del == 'on') {
-            user::where('id',''.$id.'')->update([
-
-              'delCat' => 1,
-           
-            ]);
-        } else { user::where('id',''.$id.'')->update([ 'delCat' => null, ]); }
-       
+  
          /*********droit produit**********/    
         
         if($request->consulteprd == 'on') {
@@ -93,23 +75,6 @@ class AdminManageController extends Controller
       } else { user::where('id',''.$id.'')->update([ 'consultPrd' => null, ]); }
 
 
-      if($request->editeprd == 'on') {
-            user::where('id',''.$id.'')->update([
-
-              'editePrd' => 1,
-           
-            ]);
-        }  else { user::where('id',''.$id.'')->update([ 'editePrd' => null, ]); }
-
-
-        if($request->delprd == 'on') {
-            user::where('id',''.$id.'')->update([
-
-              'delPrd' => 1,
-           
-            ]);
-        } else { user::where('id',''.$id.'')->update([ 'delPrd' => null, ]); }
-       
 
         return redirect()->route('usermanage.index')->withPf(" Des droits ont été acodés à l'utilisateur!"); 
   }

@@ -59,53 +59,5 @@
                 </div>
                
             </div>
-<?php /*
-    <div class="py-12">
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
-                <div class="p-6 bg-white border-b border-gray-200"> 
 
-                <div class="list-group">
-                	<div class="bg-blue-100 border-t border-b border-blue-500 text-blue-700 px-4 py-3" role="alert">
-    
-					  <a href="produits" class="list-group-item list-group-item-action flex-column align-items-start cursor-pointer mx-auto lg:mx-0 bg-white text-gray-800 font-bold rounded-full my-6">
-					    <div class="d-flex w-100 justify-content-between">
-					      <h5 class="mb-1">Gestion des produits</h5>
-					 
-					    </div>
-					    <p class="mb-1">Ajout,mise à jour,suppression, recherche, Affichage.</p>
-					  </a>
-					</div>  
-					    <br>  <br>
-					<div class="bg-blue-100 border-t border-b border-blue-500 text-blue-700 px-4 py-3" role="alert">
-        
-					  <a href="categorie" class="list-group-item list-group-item-action flex-column align-items-start cursor-pointer mx-auto lg:mx-0 bg-white text-gray-800 font-bold rounded-full my-6">
-					    <div class="d-flex w-100 justify-content-between">
-					      <h5 class="mb-1">Gestion des categories</h5>
-					    
-					    </div>
-					    <p class="mb-1">Ajout,mise à jour,suppression, recherche, Affichage.</p>
-					
-					  </a>
-					</div>  
-					  <br>  <br>
-					  <div class="bg-blue-100 border-t border-b border-blue-500 text-blue-700 px-4 py-3" role="alert">
-    
-					  <a href="user" class="list-group-item list-group-item-action flex-column align-items-start cursor-pointer mx-auto lg:mx-0 bg-white text-gray-800 font-bold rounded-full my-6">
-					    <div class="d-flex w-100 justify-content-between">
-					      <h5 class="mb-1">Edition des infos du compte</h5>
-	
-					    </div>
-					    <p class="mb-1">Edition des informations du compte.</p>
-					
-					  </a>
-					</div>
-
-               
-                </div>
-            </div>
-        </div>
-    </div>
-
-  */?>
 </x-app-layout>  

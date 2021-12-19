@@ -6,7 +6,7 @@ use App\Http\Requests\SearchRequest;
 use Illuminate\Http\Request;
 use App\Models\Produit;
 use App\Models\Categorie;
-use session;
+
 class HomeController extends Controller
 {
     /**
@@ -16,13 +16,13 @@ class HomeController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function __invoke(Request $request)
-    {    $today = date("Y-m-d");
-        $favorie=Produit::where('dt_fin_favorie','>',''.$today.'')->get();
+    {   $today = date("Y-m-d");
         $acceuils = Produit::all();
-         $categorie  = Categorie::all();
-         return view('acceuil', compact('acceuils','categorie','favorie'));
-        //return view('shop-left-sidebar', compact('acceuils','categorie'));
-        //return redirect('useGestProd')->withOk("Produit " . $produit->nom_prd . " a été créé.");
+        $categorie  = Categorie::all();
+        $favorie=Produit::where('dt_fin_favorie','>',''.$today.'')->get();
+        $slide = Produit::orderBy('id')->limit(5)->get();
+        
+         return view('acceuil', compact('acceuils','categorie','favorie','slide'));
     }
 
    

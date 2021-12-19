@@ -63,7 +63,7 @@
   </style>
 <div class="bg-gray-800 pt-3">
     <div class="rounded-tl-3xl bg-gradient-to-r from-blue-900 to-gray-800 p-4 shadow text-2xl text-white">
-        <h3 class="font-bold pl-2">  Information de votre compt </h3>
+        <h3 class="font-bold pl-2">  Information du compte </h3>
     </div>
 </div>
  @if(session()->has('statu'))
@@ -98,11 +98,10 @@
   <div class="top h-64 w-full bg-blue-600 overflow-hidden relative" >
     <img src="{{ asset('imguser/' . Auth::user()->image) }}" alt="" class="bg w-full h-full object-cover object-center absolute z-0">
     <div class="flex flex-col justify-center items-center relative h-full bg-black bg-opacity-50 text-white">
-      @if(Auth::user()->image == '')
+      @if(Auth::user()->image == '1')
          <img class="responsive-img h-24 w-24 object-cover rounded-full" src="{{ asset('imguser/' .'default' . '.png') }}" />
-      @endif
-      @if(Auth::user()->image != '')
-      <img src="{{ asset('imguser/' . Auth::user()->image) }}" class="h-24 w-24 object-cover rounded-full">
+      @elseif(Auth::user()->image != '')
+      <img src="{{ asset('imguser/' . Auth::user()->image) }}" class="responsive-img h-24 w-24 object-cover rounded-full">
        @endif
       <h1 class="text-2xl font-semibold">{{ Auth::user()->name }}</h1>
       <h4 class="text-sm font-semibold"></h4>
@@ -162,19 +161,19 @@
           </div>
           <div class="flex flex-col md:flex-row md:items-center md:justify-between">
             <div class="flex-1">
-              <div x-show="step === 1">
+              <div x-show="step === <?php echo session('step1');?>">
                 <div class="text-lg font-bold text-gray-700 leading-tight">Mise à jour de Image de Profile</div>
               </div>
               
-              <div x-show="step === 2">
+              <div x-show="step === <?php echo session('step2');?>">
                 <div class="text-lg font-bold text-gray-700 leading-tight">Mise à jour du Nom</div>
               </div>
 
-              <div x-show="step === 3">
+              <div x-show="step === <?php echo session('step3');?>">
                 <div class="text-lg font-bold text-gray-700 leading-tight">Mise à jour du Mot de pass</div>
               </div>
 
-              <div x-show="step === 4">
+              <div x-show="step === <?php echo session('step4');?>">
                 <div class="text-lg font-bold text-gray-700 leading-tight">Mise à jour de l'adresse email</div>
               </div>
 
@@ -256,18 +255,21 @@
     
            </form>
             </div>
-           
-
           
-           
-
-
           <div x-show.transition.in="step === <?php echo session('step3');?>">
             @if(session()->has('ps'))
                 <div class="bg-blue-100 border-t border-b border-blue-500 text-blue-700 px-4 py-3" role="alert">
                   <p class="font-bold">Informational message</p>
                   <p class="text-sm">{!! session('ps') !!}.</p>
                 </div>
+            @endif
+            @if(session()->has('pser'))
+            
+              <div class="bg-red-100 border-t border-b border-red-500 text-white-700 px-4 py-3" role="alert">
+              <p class="font-bold">Informational</p>
+              <p class="text-sm">{!! session('pser') !!}.</p>
+
+            </div>
             @endif
           <form method="post" action="{{ route('updateusepass') }}" enctype="multipart/form-data" >  
             @csrf
@@ -279,23 +281,12 @@
               
               </div>
 
-           <!-- <div class="mb-5">
-              <input type="hidden" name="name" value="{{ Auth::user()->name  }}" 
-                class="w-full px-4 py-3 rounded-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-600 font-medium @error('name')border-red-500 @enderror"
-                placeholder="Enter your firstname...">
-            </div>
-
-               <input type="hidden" name="email"  value="{{ Auth::user()->email }}" 
-                class="w-full px-4 py-3 rounded-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-600 font-medium @error('email')border-red-500 @enderror"
-                placeholder="Enter your email address..."> -->
-
-
 
               <div class="relative">
                   <label for="password" class="font-bold mb-1 text-gray-700 block">Mot de pass actuel</label>
                 <input
                   name="passactuel"
-                  :type="togglePassword ? 'text' : 'password'"
+                  :type="togglePassword ? 'password' : 'password'"
                   @keydown="checkPasswordStrength()"
                   x-mode="passactuel"
                   class="w-full px-4 py-3 rounded-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-600 font-medium @error('passactuel')border-red-500 @enderror"
@@ -303,7 +294,7 @@
                 <div class="mb-5">
                  <label for="password" class="font-bold mb-1 text-gray-700 block">Entrey le nouveaux mot de pass</label>
                 <input
-                  :type="togglePassword ? 'text' : 'password'"
+                  :type="togglePassword ? 'password' : 'password'"
                   name="password"
                   @keydown="checkPasswordStrength()"
                   x-mode="password"
@@ -316,7 +307,7 @@
                 <div class="mb-5">
                 <label for="confirmnewpass" class="font-bold mb-1 text-gray-700 block">Confirmer</label>
                 <input
-                  :type="togglePassword ? 'text' : 'password'"
+                  :type="togglePassword ? 'password' : 'password'"
                   name="password_confirmation"
                   @keydown="checkPasswordStrength()"
                   x-mode="password"
@@ -331,7 +322,7 @@
                 <div class="absolute right-0 bottom-0 top-0 px-3 py-3 cursor-pointer" 
                   @click="togglePassword = !togglePassword"
                 > 
-                  <svg :class="{'hidden': !togglePassword, 'block': togglePassword }" xmlns="http://www.w3.org/2000/svg" class="w-12 h-1 fill-current text-gray-500" viewBox="0 0 24 24"><path d="M12 19c.946 0 1.81-.103 2.598-.281l-1.757-1.757C12.568 16.983 12.291 17 12 17c-5.351 0-7.424-3.846-7.926-5 .204-.47.674-1.381 1.508-2.297L4.184 8.305c-1.538 1.667-2.121 3.346-2.132 3.379-.069.205-.069.428 0 .633C2.073 12.383 4.367 19 12 19zM12 5c-1.837 0-3.346.396-4.604.981L3.707 2.293 2.293 3.707l18 18 1.414-1.414-3.319-3.319c2.614-1.951 3.547-4.615 3.561-4.657.069-.205.069-.428 0-.633C21.927 11.617 19.633 5 12 5zM16.972 15.558l-2.28-2.28C14.882 12.888 15 12.459 15 12c0-1.641-1.359-3-3-3-.459 0-.888.118-1.277.309L8.915 7.501C9.796 7.193 10.814 7 12 7c5.351 0 7.424 3.846 7.926 5C19.624 12.692 18.76 14.342 16.972 15.558z"/></svg>
+                 
 
                   <svg :class="{'hidden': togglePassword, 'block': !togglePassword }" xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 fill-current text-gray-500" viewBox="0 0 24 24"><path d="M12,9c-1.642,0-3,1.359-3,3c0,1.642,1.358,3,3,3c1.641,0,3-1.358,3-3C15,10.359,13.641,9,12,9z"/><path d="M12,5c-7.633,0-9.927,6.617-9.948,6.684L1.946,12l0.105,0.316C2.073,12.383,4.367,19,12,19s9.927-6.617,9.948-6.684 L22.054,12l-0.105-0.316C21.927,11.617,19.633,5,12,5z M12,17c-5.351,0-7.424-3.846-7.926-5C4.578,10.842,6.652,7,12,7 c5.351,0,7.424,3.846,7.926,5C19.422,13.158,17.348,17,12,17z"/></svg>
                 </div>
@@ -377,7 +368,7 @@
                         <!-- modal body -->
                         <form method="post" action="{{ route('updateusemail') }}" enctype="multipart/form-data" >
                          
-                          @csrf
+                        @csrf
 
                         <div class="p-3">
 
@@ -417,7 +408,8 @@
                 </p>
               </div>
              @endif
-            <form method="post" action="{{ route('updateusnewemail') }}" enctype="multipart/form-data" >  
+            
+          <form method="post" action="{{ route('updateusnewemail') }}" enctype="multipart/form-data" >  
             @csrf
 
               <label for="password" class="font-bold mb-1 text-gray-700 block">Changer l'adresse email </label>
@@ -442,10 +434,10 @@
             </div>
 
             <div class="mb-5">
-              <label for="email" class="font-bold mb-1 text-gray-700 block">Entre le nouveaux</label>
+              <label for="email" class="font-bold mb-1 text-gray-700 block">Entrez la nouvelle adresse email</label>
               <input type="email" name="email"  
                 class="w-full px-4 py-3 rounded-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-600 font-medium @error('email')border-red-500 @enderror"
-                placeholder="Enter your email address...">
+                placeholder="Entrez votre adresse mail...">
                   @error("email")
                         <small class="text-danger">{{ $message }}</small>
                   @enderror
@@ -455,7 +447,7 @@
                 <button type="submit" class="w-full text-center px-4 py-3 bg-blue-500 rounded-md shadow-md text-white font-semibold">
                         Valider
                  </button>
-               </form>
+        </form>
 
 
 
@@ -468,60 +460,10 @@
       </div>
     </div>
 
-    <!-- Bottom Navigation --
-    <div class="fixed bottom-0 left-0 right-0 py-5 bg-white shadow-md" x-show="step != 'complete'">
-      <div class="max-w-3xl mx-auto px-4">
-        <div class="flex justify-between">
-          <div class="w-1/2">
-            <button
-              x-show="step > 1"
-              @click="step--"
-              class="w-32 focus:outline-none py-2 px-5 rounded-lg shadow-sm text-center text-gray-600 bg-white hover:bg-gray-100 font-medium border" 
-            >Previous</button>
-          </div>
-
-          <div class="w-1/2 text-right">
-           <button
-              x-show="step < 2"
-              @click="step++"
-              class="w-32 focus:outline-none border border-transparent py-2 px-5 rounded-lg shadow-sm text-center text-white bg-blue-500 hover:bg-blue-600 font-medium" 
-            >Suivant</button>
-
-            <button
-              @click="step = 'complete'"
-              x-show="step === 2"
-              class="w-32 focus:outline-none border border-transparent py-2 px-5 rounded-lg shadow-sm text-center text-white bg-blue-500 hover:bg-blue-600 font-medium" 
-            >Complete</button>
-          </div>
-        </div>
-      </div>
-    </div>
-    <!-s / Bottom Navigation https://placehold.co/300x300/e2e8f0/cccccc --> 
-
-
-
-
- <!--   </div>  -->
-
 
   </div>
 </div>
 
-    <!--<div class="grid grid-cols-1 mt-5 mx-7">
-    
-        <div class='flex items-center justify-center w-full'>
-            <label class=''>
-                <div class='flex flex-col items-center justify-center pt-7'>
-                
-                    <img class="w-40 h-40 object-cover rounded-full border-2 border-indigo-500" src="{{ asset('imguser/' . Auth::user()->id.'.png') }}">
-                </div>
-              <input type='file' class="hidden" />
-            </label>
-        </div>
-    </div>-->
-
-<!-- This is an example component -->
- 
 
 
   <script>
@@ -553,108 +495,9 @@
     }
   </script>
 
-
-  <!-- <div class="flex justify-center md:justify-center -mt-10">
-      <form method="post" action="{{ route('updateprofilimage') }}" enctype="multipart/form-data">
-          @method("PUT")    
-          @csrf
-           <label class=''>
-            <img class="w-40 h-40 object-cover rounded-full border-2 border-indigo-500" src="{{ asset('imguser/' . Auth::user()->id.'.png') }}">
-            <input type='file' class="hidden" />
-          </label>
-      </form>
-    </div>
-
-
-
-  <div>
-    <h2 class="text-gray-800 text-3xl font-semibold">{{ Auth::user()->name }}</h2>
-    <p class="mt-2 text-gray-600">{{ Auth::user()->email }}</p>
-  </div>
-  <div class="flex justify-end mt-4">
-    <a href="#" class="text-xl font-medium text-indigo-500">John Doe</a>
-  </div>
-
-</div>
-
-       <div class="w-full sm:w-1/2 md:w-1/2 lg:w-1/2 xl:w-1/2 mb-4 bg-gray-00">
-
-            <div class="mb-6">
-                      <label class="block mb-3 text-gray-600" for="">Nom</label>
-                      <input value="{{ Auth::user()->name }}" type="text" name="name" :value="old('name')" required autofocus class="border border-gray-500 @error('name')border-red-500 @enderror rounded-md inline-block py-2 px-3 w-full text-gray-600 tracking-wider"/>
-                   
-                  </div>
-                  <div class="mb-6">
-                      <label class="block mb-3 text-gray-600" for="">Email</label>
-                      <input value="{{ Auth::user()->email  }}" type="email" name="email" :value="old('email')" required class="border  border-gray-500 @error('email')border-red-500 @enderror rounded-md inline-block py-2 px-3 w-full text-gray-600 tracking-widest"/>
-                       @error("email")
-                        <small class="text-danger">{{ $message }}</small>
-                        @enderror
-                  </div>
-          
-                   <div class="mb-6">
-                      <label class="block mb-3 text-gray-600" for="">Mots de pass</label>
-                      <input value="{{ Auth::user()->password  }}"  type="password" name="password"  required autocomplete="new-password" class="border  border-gray-500 @error('password')border-red-500 @enderror rounded-md inline-block py-2 px-3 w-full text-gray-600 tracking-widest"/>
-                       @error("password")
-                        <small class="text-danger">{{ $message }}</small>
-                        @enderror
-                  </div>
-
-
-                  <div class="mb-6">
-                      <label class="block mb-3 text-gray-600" for="">Confirmer</label>
-                        <input  value="{{ Auth::user()->password  }}"  type="password" name="password_confirmation"  required autocomplete="new-password" class="border  border-gray-500 @error('password_confirmation')border-red-500 @enderror rounded-md inline-block py-2 px-3 w-full text-gray-600 tracking-widest"/>
-                 @error("password_confirmation")
-                        <small class="text-danger">{{ $message }}</small>
-                        @enderror
-                  </div>
-
-       </div>
-
-       <div class="flex flex-col max-w-4xl md:h-56 bg-white rounded-lg shadow-lg overflow-hidden md:flex-row my-10">
-        <div class="md:flex items-center justify-center md:w-1/2 md:bg-gray-700">
-            <div class="py-6 px-8 md:py-0">
-            
-
-                <label class="block mb-3 text-gray-600" for="">Choisisez une image
-                
-                   <img class="w-ful p-6" src="{{ asset('imguser/' . Auth::user()->id.'.png') }}" alt="image">
-                     <input type='file' class="hidden" />
-                </label>
-            </div>
-        </div>
-     
-    </div>
-
+      </div> 
+      </div> 
  
-              <form id="uploadprf" method="post" action="" enctype="multipart/form-data">
-                  <div id="dropprf"><span style="color:#fff;">taille de l'image <= 4 Mo</span>
-                
-                    
-                      <img class="img-responsive center-block" src="{{ asset('imguser/' . Auth::user()->id.'.png') }}" >
-                 
-                    <input type="file" name=""/>
-                    
-                  </div>
-              
-              </form>-->
-
-       <!-- <div class="w-full sm:w-1/2 md:w-1/2 lg:w-1/2 xl:w-1/2 mb-4 bg-gray-00">
-            <div class="mb-6">
-                <label class="block mb-3 text-gray-600" for="">Choisisez une image
-                   <img class="w-ful p-6" src="{{ asset('imguser/' . Auth::user()->id.'.jpg') }}" alt="image">
-                </label>
-                <input wire:model="image" value="" name="image" type="file" class="form-control-file" class="border  border-gray-500 @error('image') border-red-500 @enderror rounded-md inline-block py-2 px-3 w-full text-gray-600 tracking-widest"/>
-            </div>
-
-       </div>-->
-      </div> 
-      </div> 
-      <!--<div class="flex justify-center pt-2 my-2">
-            <button type="submit" class="w-full text-center px-4 py-3 bg-blue-500 rounded-md shadow-md text-white font-semibold">
-                        Valider
-            </button>
-      </div>-->
    </div>
 
 </div>

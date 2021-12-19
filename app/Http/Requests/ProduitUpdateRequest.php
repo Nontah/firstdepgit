@@ -24,7 +24,7 @@ class ProduitUpdateRequest extends FormRequest
     public function rules()
     {
         return [
-            'designation' => 'required|min:3|max:50|unique:produits,designation',
+            'designation' => 'required|min:3|max:50|unique:produits,designation,'.$this->produit,
             'prix' => 'required|numeric|between:1000,1000000',
             'quantite' => 'required|numeric|between:5,500',
             'description' => 'required|min:10|max:255',

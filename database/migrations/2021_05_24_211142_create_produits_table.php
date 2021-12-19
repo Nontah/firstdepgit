@@ -16,12 +16,17 @@ class CreateProduitsTable extends Migration
         Schema::create('produits', function (Blueprint $table) {
             $table->id();
             $table->string('designation')->unique();
-            $table->integer('prix');
+            $table->integer('prix')->nullable();
             $table->text('description')->nullable();
-            $table->integer('quantite');
-            $table->string('image');
+            $table->integer('quantite')->nullable();
+            $table->string('image')->nullable();
+            $table->string('img2')->nullable();
+            $table->string('img3')->nullable();
             $table->foreignId('category_id')->constrained();
             $table->foreignId('user_id')->constrained();
+            $table->date('dt_debut_favorie')->nullable();
+            $table->date('dt_fin_favorie')->nullable();
+            
         });
     }
 

@@ -51,13 +51,7 @@
        
            <input type="checkbox" name="consulte" id="consulte" class="" <?php if( $user->consultCat == 1 ) { ?> checked <?php }?> >
 
-              <span class="text-gray-600" for="">Editer</span>
-       
-           <input type="checkbox" name="edite" id="edite" class="" <?php if( $user->editeCat == 1 ) { ?> checked <?php }?>>
-
-               <span class="text-gray-600" for="">Supprimer</span>
-       
-           <input type="checkbox" name="del" id="del" class="" <?php if( $user->delCat == 1 ) { ?> checked <?php }?>>
+             
 
           </div>
      
@@ -72,14 +66,6 @@
                <span class="text-gray-600" for="">Consulter</span>
        
            <input type="checkbox" name="consulteprd" id="consulteprd" class="" <?php if( $user->consultPrd == 1 ) { ?> checked <?php }?> >
-
-              <span class="text-gray-600" for="">Editer</span>
-       
-           <input type="checkbox" name="editeprd" id="editeprd" class="" <?php if( $user->editePrd == 1 ) { ?> checked <?php }?>>
-
-               <span class="text-gray-600" for="">Supprimer</span>
-       
-           <input type="checkbox" name="delprd" id="delprd" class="" <?php if( $user->delPrd == 1 ) { ?> checked <?php }?>>
 
           </div>
      

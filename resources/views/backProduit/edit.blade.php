@@ -10,6 +10,12 @@
         </h3>
     </div>
 </div>
+   @if(session()->has('mo'))
+            <div class="bg-blue-100 border-t border-b border-blue-500 text-blue-700 px-4 py-3" role="alert">
+              <p class="font-bold">Information </p>
+              <p class="text-sm">{!! session('mo') !!}.</p>
+            </div>
+    @endif
    @if(session()->has('adimg'))
             <div class="bg-blue-100 border-t border-b border-blue-500 text-blue-700 px-4 py-3" role="alert">
               <p class="font-bold">Information </p>

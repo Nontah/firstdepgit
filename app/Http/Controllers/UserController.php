@@ -93,33 +93,36 @@ class UserController extends Controller
 
     public function updateusepass(UppassFormRequest $request)
     {   
-        $mail=Auth::user()->email;
+        //$mail=Auth::user()->email;
 
         $password = Hash::make($request->password);
 
         $password_confirmation = Hash::make($request->password_confirmation);
 
-        $r2 = Hash::check($request->password,  $password_confirmation);
+         $r2 = Hash::check($request->password,  $password_confirmation);
        
-        $userpass = User::where('email', $mail)->find(''.Auth::user()->id.'');
+         $userpass = User::where('email', Auth::user()->email)->find(''.Auth::user()->id.'');
       
         $result= $userpass->password;
         $r = Hash::check($request->passactuel,  $result);
 
-
-        if ($r == true and $r2 == true) {
-
-            User::where('email', $mail)->update([
-            'password' => Hash::make($request->password_confirmation),
-           ]);
-
-        }
             session([ 'step1' => '3']);
             session([ 'step2' => '2']);
             session([ 'step3' => '1']);
             session([ 'step4' => '4']);
 
-     return redirect()->route('user.index')->withPs("votre mot de passe été mis à jour avec succes!");
+
+        if ($r == true and $r2 == true) {
+
+            User::where('email', Auth::user()->email)->update([
+            'password' => Hash::make($request->password_confirmation),
+           ]);
+
+            return redirect()->route('user.index')->withPs("votre mot de passe été mis à jour avec succes!");
+    }
+           
+
+     return redirect()->route('user.index')->withPser("votre mot de passe n'a pas été mis à jour avec succes!");
     }
 
 
@@ -187,9 +190,9 @@ class UserController extends Controller
             if(Auth::user()!=null) {
 
                 $mail=Auth::user()->email;
-            
+        
                 if ($request->code)
-                   { 
+                { 
 
                     $newmail = session('newadrmail');
                  

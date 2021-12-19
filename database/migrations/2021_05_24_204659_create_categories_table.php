@@ -17,6 +17,7 @@ class CreateCategoriesTable extends Migration
             $table->id();
             $table->string('libele')->unique();
             $table->string('description')->unique();
+            $table->string('image')->nullable();
             $table->foreignId('user_id')->constrained();
         });
     }

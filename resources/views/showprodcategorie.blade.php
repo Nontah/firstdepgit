@@ -1,149 +1,14 @@
-      <x-guestshop-layout>
-        <div class="body-wrapper">
-            <!-- Begin Header Area -->
-              <x-headmaster-layout> 
+<x-guestshop-layout>
+    <div class="body-wrapper">
+        <!-- Begin Header Area -->
+    <x-headmaster-layout> 
 
-            </x-headmaster-layout>
-           <style type="text/css">
-               .category-sub-menu ul li {
-    padding-top: px;
+    </x-headmaster-layout>
 
-}
+<style type="text/css">
 
-.category-sub-menu li.has-sub > a {
-   bottom: 27px; 
-}
-
- 
-.relative {
-    position: relative;
-}
-.inline-flex {
-    display: inline-flex;
-}
-.rounded-md {
-    border-radius: 0.375rem;
-}
-
-
-
-
-
-.sm\:justify-between {
-
-    justify-content: space-between;
-
-}
-.sm\:items-center {
-
-    align-items: center;
-
-}
-.sm\:flex {
-
-    display: flex;
-
-}
-
-.justify-between {
-    justify-content: space-between;
-}
-.items-center {
-    align-items: center;
-}
-.justify-between {
-    justify-content: space-between;
-}
-.items-center {
-    align-items: center;
-}
-.flex {
-    display: flex;
-}
-
-.paginatoin-area {
-    font-size: 14px;
-    font-weight: 400;
-
-}
-
-svg:not(:root) {
-
-    text-overflow: ellipsis;
-
-}
-.w-5 {
-     width: 1.25rem;
-    overflow: hidden;
-    border: 1px solid #000;
-}
-
-.text-sm {
-
-    font-size: .875rem;
-    line-height: 1.25rem;
-    width: ;
-    border: 1px solid #000;
-
-}
-.leading-5 {
-
-    line-height: 1.25rem;
-
-}
-.text-gray-700 {
-
-    --tw-text-opacity: 1;
-    color: rgba(55,65,81,var(--tw-text-opacity));
-
-}
-.items-center {
-
-    align-items: center;
-
-}
-.items-center {
-
-    align-items: center;
-
-}
-.rounded-md {
-
-    border-radius: 0.375rem;
-
-}
-.inline-flex {
-
-    display: inline-flex;
-
-}
-.relative {
-
-    position: relative;
-
-}
-
-.sm\:flex-1 {
-
-    flex: ;
-    visibility: hidden;
-    width: 0px;
-       overflow: hidden;
-
-}
-
-.flex {
-    display: flex;
-    flex: 1 1%;
-  overflow: hidden;
-
-}
-.header-sticky.sticky {
-
-    visibility: hidden;
-}
-
-           </style>
+.category-sub-menu ul li { padding-top: px; } .category-sub-menu li.has-sub > a {  bottom: 27px; } .relative { position: relative; } .inline-flex {  display: inline-flex; } .rounded-md { border-radius: 0.375rem; }
+</style>
             <!-- Header Area End Here -->
             <!-- Begin Li's Breadcrumb Area -->
          
@@ -172,20 +37,7 @@ svg:not(:root) {
                                     </div>
                                 </div>
                                 <!-- product-select-box start -->
-                                <div class="product-select-box">
-                                    <div class="product-short">
-                                        <p>Sort By:</p>
-                                        <select class="nice-select">
-                                            <option value="trending">Relevance</option>
-                                            <option value="sales">Name (A - Z)</option>
-                                            <option value="sales">Name (Z - A)</option>
-                                            <option value="rating">Price (Low &gt; High)</option>
-                                            <option value="date">Rating (Lowest)</option>
-                                            <option value="price-asc">Model (A - Z)</option>
-                                            <option value="price-asc">Model (Z - A)</option>
-                                        </select>
-                                    </div>
-                                </div>
+                               
                                 <!-- product-select-box end -->
                             </div>
                             <!-- shop-top-bar end -->
@@ -204,7 +56,7 @@ svg:not(:root) {
                                                             <a href="{{ route('show_produit','id='.$acceuil->id.'')}}">
                                                                 <img src="{{ asset('img/' . $acceuil->image) }}" alt="Li's Product Image">
                                                             </a>
-                                                            <span class="sticker">New</span>
+                                                    
                                                         </div>
 
                                                         <div class="product_desc">
@@ -221,13 +73,7 @@ svg:not(:root) {
                                                             {{ $acceuil->prix }}</span>
                                                                 </div>
                                                             </div>
-                                                            <div class="add-actions">
-                                                                <ul class="add-actions-link">
-                                                                    <li class="add-cart active"><a href="shopping-cart.html">Add to cart</a></li>
-                                                                    
-                                                                    <li><a class="links-details" href="wishlist.html"><i class="fa fa-heart-o"></i></a></li>
-                                                                </ul>
-                                                            </div>
+                                                            
                                                         </div>
 
                                                     </div>
@@ -278,9 +124,7 @@ svg:not(:root) {
                                                     <div class="col-lg-4">
                                                         <div class="shop-add-action mb-xs-30">
                                                             <ul class="add-actions-link">
-                                                                <li class="add-cart"><a href="#">Add to cart</a></li>
-                                                                <li class="wishlist"><a href="wishlist.html"><i class="fa fa-heart-o"></i>Add to wishlist</a></li>
-                                                                <li><a class="quick-view" data-toggle="modal" data-target="#exampleModalCenter" href="#"><i class="fa fa-eye"></i>Quick view</a></li>
+                                                               
                                                             </ul>
                                                         </div>
                                                     </div>
@@ -341,130 +185,14 @@ svg:not(:root) {
                     </div>
                 </div>
             </div>
-            <!-- Content Wraper Area End Here -->
+       
             <!-- Begin Footer Area -->
-            <div class="footer">
-                <!-- Begin Footer Static Top Area -->
-                <div class="footer-static-top">
-                    <div class="container">
-                        <!-- Begin Footer Shipping Area -->
-                        <div class="footer-shipping pt-60 pb-55 pb-xs-25">
-                            <div class="row">
-                                <!-- Begin Li's Shipping Inner Box Area -->
-                                <div class="col-lg-3 col-md-6 col-sm-6 pb-sm-55 pb-xs-55">
-                                    <div class="li-shipping-inner-box">
-                                        <div class="shipping-icon">
-                                            <img src="images/shipping-icon/1.png" alt="Shipping Icon">
-                                        </div>
-                                        <div class="shipping-text">
-                                            <h2>Free Delivery</h2>
-                                            <p>And free returns. See checkout for delivery dates.</p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <!-- Li's Shipping Inner Box Area End Here -->
-                                <!-- Begin Li's Shipping Inner Box Area -->
-                                <div class="col-lg-3 col-md-6 col-sm-6 pb-sm-55 pb-xs-55">
-                                    <div class="li-shipping-inner-box">
-                                        <div class="shipping-icon">
-                                            <img src="images/shipping-icon/2.png" alt="Shipping Icon">
-                                        </div>
-                                        <div class="shipping-text">
-                                            <h2>Safe Payment</h2>
-                                            <p>Pay with the world's most popular and secure payment methods.</p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <!-- Li's Shipping Inner Box Area End Here -->
-                                <!-- Begin Li's Shipping Inner Box Area -->
-                                <div class="col-lg-3 col-md-6 col-sm-6 pb-xs-30">
-                                    <div class="li-shipping-inner-box">
-                                        <div class="shipping-icon">
-                                            <img src="images/shipping-icon/3.png" alt="Shipping Icon">
-                                        </div>
-                                        <div class="shipping-text">
-                                            <h2>Shop with Confidence</h2>
-                                            <p>Our Buyer Protection covers your purchasefrom click to delivery.</p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <!-- Li's Shipping Inner Box Area End Here -->
-                                <!-- Begin Li's Shipping Inner Box Area -->
-                                <div class="col-lg-3 col-md-6 col-sm-6 pb-xs-30">
-                                    <div class="li-shipping-inner-box">
-                                        <div class="shipping-icon">
-                                            <img src="images/shipping-icon/4.png" alt="Shipping Icon">
-                                        </div>
-                                        <div class="shipping-text">
-                                            <h2>24/7 Help Center</h2>
-                                            <p>Have a question? Call a Specialist or chat online.</p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <!-- Li's Shipping Inner Box Area End Here -->
-                            </div>
-                        </div>
-                        <!-- Footer Shipping Area End Here -->
-                    </div>
-                </div>
-                <!-- Footer Static Top Area End Here -->
-                <!--oter Static Middle Area End Here -->
-                <!-- Begin Footer Static Bottom Area -->
-               
-                <!-- Footer Static Bottom Area End Here -->
-            </div>
+            <x-footer-layout>
+            
+            </x-footer-layout>
             <!-- Footer Area End Here -->
-            <!-- Begin Quick View | Modal Area -->
-            <div class="modal fade modal-wrapper" id="exampleModalCenter" >
-                <div class="modal-dialog modal-dialog-centered" role="document">
-                    <div class="modal-content">
-                        <div class="modal-body">
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
-                            <div class="modal-inner-area row">
-                                <div class="col-lg-5 col-md-6 col-sm-6">
-                                   <!-- Product Details Left -->
-                                    <div class="product-details-left">
-                                        <div class="product-details-images slider-navigation-1">
-                                            <div class="lg-image">
-                                                <img src="images/product/large-size/1.jpg" alt="product image">
-                                            </div>
-                                            <div class="lg-image">
-                                                <img src="images/product/large-size/2.jpg" alt="product image">
-                                            </div>
-                                            <div class="lg-image">
-                                                <img src="images/product/large-size/3.jpg" alt="product image">
-                                            </div>
-                                            <div class="lg-image">
-                                                <img src="images/product/large-size/4.jpg" alt="product image">
-                                            </div>
-                                            <div class="lg-image">
-                                                <img src="images/product/large-size/5.jpg" alt="product image">
-                                            </div>
-                                            <div class="lg-image">
-                                                <img src="images/product/large-size/6.jpg" alt="product image">
-                                            </div>
-                                        </div>
-                                        <div class="product-details-thumbs slider-thumbs-1">                                        
-                                            <div class="sm-image"><img src="images/product/small-size/1.jpg" alt="product image thumb"></div>
-                                            <div class="sm-image"><img src="images/product/small-size/2.jpg" alt="product image thumb"></div>
-                                            <div class="sm-image"><img src="images/product/small-size/3.jpg" alt="product image thumb"></div>
-                                            <div class="sm-image"><img src="images/product/small-size/4.jpg" alt="product image thumb"></div>
-                                            <div class="sm-image"><img src="images/product/small-size/5.jpg" alt="product image thumb"></div>
-                                            <div class="sm-image"><img src="images/product/small-size/6.jpg" alt="product image thumb"></div>
-                                        </div>
-                                    </div>
-                                    <!--// Product Details Left -->
-                                </div>
-
-                              
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>   
-            <!-- Quick View | Modal Area End Here -->
+           
+        
         </div>
         <!-- Body Wrapper End Here -->
         <!-- jQuery-V1.12.4 -->

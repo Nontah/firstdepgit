@@ -455,8 +455,8 @@ textarea:focus {
 	background-image: url(/img/1.jpg);
 
 	background-repeat: no-repeat;
-	background-position: center center;
-	background-size: cover;
+	background-position: center center;/***/
+	background-size: cove;
 
 	min-height: 400px;
 	width: 50%;
@@ -472,10 +472,10 @@ textarea:focus {
 	background-image: url(/img/4.jpg);
 	background-repeat: no-repeat;
 	background-position: center center;
-	background-size: cover;
+	background-size: cove;
 
 	min-height: 400px;
-	width: 100%;
+	width: 50%;
 }
 .bg-5 {
 	background-image: url(/img/5.jpg);
@@ -488,9 +488,9 @@ textarea:focus {
 	background-image: url(/img/7.jpg);
 	background-repeat: no-repeat;
 	background-position: center center;
-	background-size: cover;
+	background-size: cove;
 	min-height: 400px;
-	width: 100%;
+	width: 50%;
 }
 .bg-8 {
 	background-image: url(/img/8.jpg);
@@ -502,10 +502,10 @@ textarea:focus {
 .bg-10, .bg-11, .bg-12 {
 	background-image: url(/img/10.jpg);
 	background-repeat: no-repeat;
-	background-position: center center;
-	background-size: cover;
+	background-position:center center;
+	background-size: cove;
 	min-height: 400px;
-	width: 100%;
+	width: 50%;
 }
 .bg-11 {
 	background-image: url(/img/11.jpg);
@@ -555,8 +555,8 @@ textarea:focus {
 /* animation-style-01 */
 .owl-item.active .animation-style-01 .slider-content h5,
 .owl-item.active .animation-style-01 .slider-content-2 h5 {
-    -webkit-animation: 800ms ease-in-out 0s normal none 1 running zoomInRight;
-    animation: 800ms ease-in-out 0s normal none 1 running zoomInRight;
+    -webkit-animation: 800ms ease-in-out 0s normal none 1 running zoomInRigh;
+    animation: 800ms ease-in-out 0s normal none 1 running zoomInRigh;
 }
 
 .owl-item.active .animation-style-01 .slider-content h2 {
@@ -1743,10 +1743,11 @@ textarea:focus {
 }
 .hb-menu > nav > ul {
 		position: relative;
+		  background: #03b1f7;
 }
 .hb-menu nav > ul > li {
 		display: inline-block;
-		position: relative;
+		position: relativ;
 		padding-right: 40px;
 		transition: all 0.3s ease-in-out;
 }
@@ -2032,7 +2033,7 @@ textarea:focus {
 }
 .slider-content {
 	position: absolute;
-	padding-left: 388px;
+	padding-left: 500px;
 }
 .slider-content > h5 {
 	font-weight: 400;

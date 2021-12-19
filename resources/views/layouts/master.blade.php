@@ -39,7 +39,7 @@
         <script src="/testacdoc/js/vendor/modernizr-2.8.3.min.js"></script>
 
 <style type="text/css">
-
+/*
 .justify-between {
     justify-content: space-between;
 }
@@ -284,7 +284,7 @@ img, svg, video, canvas, audio, iframe, embed, object {
     border-width: 0;
     border-style: solid;
     border-color: #e5e7eb;
-}
+}*/
 </style>
  <link rel="stylesheet" href="{{ asset('css/ap.css') }}">
 
@@ -361,13 +361,6 @@ img, svg, video, canvas, audio, iframe, embed, object {
 
 <script src="{{ asset('jsautocom/jquery-ui.js') }}"></script>
 
-
-
-
-
-
-
-
 <link href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
 
 <script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
@@ -386,4 +379,7 @@ img, svg, video, canvas, audio, iframe, embed, object {
     }
 });
 </script>
+      <x-footer-layout>
+            
+            </x-footer-layout>
 </html>

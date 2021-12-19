@@ -92,10 +92,7 @@
         <!-- Main/Activator js -->
         <script src="/testacdoc/js/main.js"></script>
     </body>
-
-
-
-
+    
 <link href="{{ asset('jsautocom/jquery-uic.css') }}">
 
 <script src="{{ asset('jsautocom/jquery-1.11.3.min.js') }}"></script>
@@ -103,10 +100,6 @@
  <link href="{{ asset('jsautocom/jquery-uicx.css') }}" rel="Stylesheet"></link>
 
 <script src="{{ asset('jsautocom/jquery-ui.js') }}"></script>
-
-
-
-
 
 <link href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
 
